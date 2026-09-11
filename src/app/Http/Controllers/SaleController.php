@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Sales\CreateSaleAction;
+use App\DTOs\Sales\CreateSaleData;
+use App\Http\Requests\Sale\StoreSaleRequest;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -25,9 +28,12 @@ class SaleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreSaleRequest $request, CreateSaleAction $action)
     {
-        //
+        $sale = $action->execute(CreateSaleData::fromRequest($request));
+
+        return to_route('sales.show', $sale)
+            ->with('success', 'Venta registrada correctamente');
     }
 
     /**
