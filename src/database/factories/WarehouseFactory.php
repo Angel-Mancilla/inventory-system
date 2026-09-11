@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Brand;
+use App\Models\Warehouse;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Brand>
+ * @extends Factory<Warehouse>
  */
-class BrandFactory extends Factory
+class WarehouseFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,8 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->company(),
-            'is_active' => true,
+            'name' => fake()->company().' - Sucursal',
+            'location' => fake()->address(),
         ];
     }
 }

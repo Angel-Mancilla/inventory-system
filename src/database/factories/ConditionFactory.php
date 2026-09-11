@@ -2,14 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
+use App\Models\Condition;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends Factory<Category>
+ * @extends Factory<Condition>
  */
-class CategoryFactory extends Factory
+class ConditionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,13 +17,10 @@ class CategoryFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->unique()->words(2, true);
-
         return [
-            'name' => ucfirst($name),
-            'slug' => Str::slug($name),
+            'name' => fake()->randomElement(['Nuevo', 'Usado', 'Reacondicionado']),
+            'warranty_days' => fake()->randomElement([0, 30, 90, 180, 365]),
             'is_active' => true,
         ];
-
     }
 }
