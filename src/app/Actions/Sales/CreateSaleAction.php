@@ -47,22 +47,23 @@ class CreateSaleAction
                 $article = Article::lockForUpdate()->findOrFail($item['article_id']);
 
                 // if($article->stock < $item['quantity'])
-                if($article->hasAvailableStock($item['quantity']))
+                if(!$article->hasAvailableStock($item['quantity']))
                 {
                     throw new InsufficientStockException(
                         "Stock insuficiente para el articulo #{$article->id}"
                     );
                 }
 
-                $unitePrice = $article->currentPrice();
-                $lineSubtotal = $unitePrice * $item['quantity'];
+                $unitPrice = $article->currentPrice();
+                $lineSubtotal = $unitPrice * $item['quantity'];
                 $subtotal += $lineSubtotal;
 
+                //inserta registro en SaleArticle (es el detalle de la venta)
                 $saleArticle = $sale->articles()->create([
                     'article_id'    =>  $article->id,
                     'quantity'      =>  $item['quantity'],
-                    'unite_price'   =>  $unitePrice,
-                    'subtotal'      =>  $subtotal,
+                    'unite_price'   =>  $unitPrice,
+                    'subtotal'      =>  $lineSubtotal,
                     'warranty_days' =>  $article->condition->warranty_days,
                 ]);
 

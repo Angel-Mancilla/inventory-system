@@ -16,6 +16,9 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import type { NavItem } from '@/types';
+import brands from '@/routes/brands';
+import categories from '@/routes/categories';
+import sales from '@/routes/sales';
 
 const mainNavItems: NavItem[] = [
     {
@@ -23,6 +26,22 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+    {
+        title: 'Marcas',
+        href: brands.index.url(),
+        icon: LayoutGrid,
+    },
+    {
+        title: 'Categorias',
+        href: categories.index.url(),
+        icon: LayoutGrid
+
+    },
+    {
+        title: 'Ventas',
+        href: sales.index.url(),
+        icon: LayoutGrid
+    }
     
 ];
 

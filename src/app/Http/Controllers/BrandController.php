@@ -18,7 +18,7 @@ class BrandController extends Controller
     public function index(): Response
     {
         return Inertia::render('Brands/Index', [
-            'brands' => Brand::query()->orderBy('name')->paginate(20),
+            'marcas' => Brand::query()->orderBy('name')->paginate(20),
         ]);
     }
 
