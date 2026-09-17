@@ -25,7 +25,7 @@ defineOptions({
             <div
                 class="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border"
             >
-                <PlaceholderPattern />
+                <PlaceholderPattern />ss
             </div>
             <div
                 class="border-sidebar-border/70 dark:border-sidebar-border relative aspect-video overflow-hidden rounded-xl border"

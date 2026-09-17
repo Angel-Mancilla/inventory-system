@@ -77,7 +77,7 @@ class Article extends Model
      * Precio vigente del artículo (el más reciente sin fecha de fin, o con
      * fecha de fin todavía no cumplida).
      */
-    public function precioActual(): ?float
+    public function currentPrice(): ?float
     {
         return $this->prices()
             ->where(fn ($query) => $query->whereNull('end_date')->orWhere('end_date', '>=', now()))
@@ -85,8 +85,12 @@ class Article extends Model
             ->value('price');
     }
 
-    public function tieneStockDisponible(int $cantidad): bool
+    public function hasAvailableStock(int $quantity): bool
     {
-        return $this->stock >= $cantidad;
+        return $this->stock >= $quantity;
     }
+    // public function tieneStockDisponible(int $cantidad): bool
+    // {
+    //     return $this->stock >= $cantidad;
+    // }
 }

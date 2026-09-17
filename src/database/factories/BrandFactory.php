@@ -18,7 +18,8 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->unique()->company(),
+            'is_active' => true,
         ];
     }
 }
