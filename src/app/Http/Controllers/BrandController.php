@@ -18,7 +18,7 @@ class BrandController extends Controller
     public function index(): Response
     {
         return Inertia::render('Brands/Index', [
-            'marcas' => Brand::query()->orderBy('name')->paginate(20),
+            'marcas' => Brand::query()->orderBy('id')->paginate(3),
         ]);
     }
 
@@ -74,5 +74,14 @@ class BrandController extends Controller
         $brand->delete();
 
         return back()->with('success', 'Marca eliminada correctamente.');  
+    }
+
+    public function toggleActive(Brand $brand)
+    {
+        $brand->update([
+            'is_active' =>  ! $brand->is_active
+        ]);
+
+        return back()->with('success', 'Estado actualizado');
     }
 }

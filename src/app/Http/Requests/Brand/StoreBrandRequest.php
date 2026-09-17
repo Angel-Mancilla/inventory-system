@@ -15,6 +15,21 @@ class StoreBrandRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation(): void
+    {
+        $except = ['is_active'];
+
+        $upperCasedData = collect($this->all())->map(function ($value, $key) use ($except) {
+            if (in_array($key, $except) || !is_string($value)) {
+                return $value;
+            }
+            
+            return mb_strtoupper($value);
+        })->toArray();
+
+        $this->merge($upperCasedData);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

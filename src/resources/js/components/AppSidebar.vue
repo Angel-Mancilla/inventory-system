@@ -47,8 +47,8 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Repositoryyyyy',
-        href: 'https://github.com/laravel/vue-starter-kit',
+        title: 'Desarrollador',
+        href: 'https://github.com/Angel-Mancilla',
         icon: FolderGit2,
     },
     {
@@ -66,7 +66,7 @@ const footerNavItems: NavItem[] = [
                 <SidebarMenuItem>
                     <SidebarMenuButton size="lg" as-child>
                         <Link :href="dashboard()">
-                            <AppLogo />
+                            <AppLogo name="xd" />
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>

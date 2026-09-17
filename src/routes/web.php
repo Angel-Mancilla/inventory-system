@@ -13,6 +13,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::inertia('dashboard', 'Dashboard')->name('dashboard');
     Route::resource('categories', CategoryController::class)->except('create','edit','show');
     Route::resource('brands', BrandController::class)->except('create','edit','show');
+    Route::patch('brands/{brand}/toggle-active', [BrandController::class, 'toggleActive'])->name('brands.toogle-active');
     Route::resource('conditions', ConditionController::class)->except('create','edit','show');
     Route::resource('warehouses', WarehouseController::class)->except('create','edit','show');
 
